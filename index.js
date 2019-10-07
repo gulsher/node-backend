@@ -18,3 +18,14 @@ let con = mysql.createConnection({
     else
         console.log('DB connection failed \n Error : ' + JSON.stringify(err, undefined, 2));
 });
+
+app.listen(3000,()=>console.log("server is running at port no 3000"));
+
+app.get('/user',(res,req)=>{
+    mysqlConnection.query('SELECT * FROM user', (err, rows, fields) => {
+        if (!err)
+            console.log(rows);
+        else
+            console.log(err);
+    })
+});
